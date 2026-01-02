@@ -45,7 +45,7 @@ class Pembeli {
 
     void beliBarang(Penjual siPenjual, Produk barangDibeli, int jumlahBeli){
         double totalHarga = jumlahBeli * barangDibeli.harga;
-        if (jumlahBeli < barangDibeli.stok){
+        if (jumlahBeli < barangDibeli.stok) {
             System.out.println("Stok Habis!");
         }
         else{
@@ -66,6 +66,7 @@ class Pembeli {
 public class FileMarketplace {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        HashMap<Integer, Produk> katalogProduk = new HashMap<>();
 
         while (true) {
             System.out.println("--- Simple MarketPlace ---");
@@ -85,13 +86,52 @@ public class FileMarketplace {
             }
             else {
                 if (opsi == 1) {
-
                     System.out.println("--- MARKETPLACE ---");
                     System.out.println("1. Lihat barang");
                     System.out.println("2. Beli barang");
                     System.out.println("3. Keluar");
                     System.out.print(">> ");
                     int choiceBuyer = scanner.nextInt();
+
+                    if (choiceBuyer == 3){
+                        break;
+                    }
+                    else if (choiceBuyer > 3 || choiceBuyer < 0) {
+                        System.out.println("Harap masukkan menu 1 sampai 3!");
+                        continue;
+                    }
+                    else {
+                        switch (choiceBuyer) {
+                            case 1:
+                                System.out.println("\n=== Daftar produk ===\n");
+                                int counter = 1;
+                                for (Produk barang : katalogProduk.values()){
+                                    System.out.println(counter + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                    System.out.println("-------------------------------");
+                                    counter += 1;
+                                    System.out.println("\n");
+                                }
+                                break;
+                        
+                            case 2:
+                                System.out.println("\n=== Daftar produk ===\n");
+                                int counter1 = 1;
+                                for (Produk barang : katalogProduk.values()){
+                                    System.out.println(counter1 + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                    System.out.println("-------------------------------");
+                                    counter1 += 1;
+                                    System.out.println("\n");
+                                }
+
+                                scanner.nextLine();
+                                System.out.print("Masukkan nama barang: ");
+                                String namaBarang = scanner.nextLine();
+
+                                System.out.println("");
+                                
+
+                        }
+                    }
                 }
             }
         }
