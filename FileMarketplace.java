@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.HashMap;
 
+// saldo dan nama akan kereset jika keluar dari program
+
 class Produk {
     String nama;
     double harga;
