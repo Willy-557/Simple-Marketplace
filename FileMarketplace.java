@@ -88,7 +88,14 @@ public class FileMarketplace {
             }
             else {
                 if (opsi == 1) {
-                    
+                    scanner.nextLine();
+                    System.out.print("Masukkan nama: ");
+                    String namaPembeli = scanner.nextLine();
+
+                    System.out.print("Masukkan saldo: ");
+                    double saldoPembeli = scanner.nextDouble();
+
+                    Pembeli pembeliBaru = new Pembeli(namaPembeli, saldoPembeli);
 
                     System.out.println("--- MARKETPLACE ---");
                     System.out.println("1. Lihat barang");
