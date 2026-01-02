@@ -62,7 +62,6 @@ class Pembeli {
     }
 }
 
-
 public class FileMarketplace {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -178,7 +177,7 @@ public class FileMarketplace {
                             String namaBarang = scanner.nextLine();
                             
                             System.out.print("Masukkan harga barang: ");
-                            double hargaBarang = scanner.nextInt();
+                            double hargaBarang = scanner.nextDouble();
 
                             System.out.print("Masukkan stock barang: ");
                             int stockBarang = scanner.nextInt();
