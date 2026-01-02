@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
 class Produk {
     String nama;
     double harga;
@@ -56,7 +59,27 @@ class Pembeli {
                 System.out.println("Berhasil beli " + barangDibeli.nama + " , sisa uang: Rp " + this.saldo + " .");
             }
         }
+    }
+}
 
+
+public class FileMarketplace {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("--- Simple MarketPlace ---");
+            System.out.println("1. Pembeli");
+            System.out.println("2. Penjual");
+            System.out.println("3. Keluar");
+            System.out.print(">> ");
+            int opsi = scanner.nextInt();
+            
+            if (opsi == 3) {
+                System.out.println("Terimakasih!");
+                break;
+            }
+        }
     }
 }
 
