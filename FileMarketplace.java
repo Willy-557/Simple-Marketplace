@@ -79,6 +79,21 @@ public class FileMarketplace {
                 System.out.println("Terimakasih!");
                 break;
             }
+            else if (opsi > 3 || opsi < 0) {
+                System.out.println("Harap masukkan menu 1 sampai 3!");
+                continue;
+            }
+            else {
+                if (opsi == 1) {
+
+                    System.out.println("--- MARKETPLACE ---");
+                    System.out.println("1. Lihat barang");
+                    System.out.println("2. Beli barang");
+                    System.out.println("3. Keluar");
+                    System.out.print(">> ");
+                    int choiceBuyer = scanner.nextInt();
+                }
+            }
         }
     }
 }
