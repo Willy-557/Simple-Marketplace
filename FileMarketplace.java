@@ -16,5 +16,18 @@ class Produk {
     }
 }
 
+class Penjual {
+    String nama;
+    double saldo;
 
+    Penjual(String nama, double saldo){
+        this.nama = nama;
+        this.saldo = saldo;
+    }
+
+    void cekDompet(){
+        System.out.println("Nama toko: " + this.nama);
+        System.out.println("Saldo toko: " + this.saldo);
+    }
+}
 
