@@ -43,9 +43,9 @@ class Pembeli {
         this.saldo = saldo;
     }
 
-    void beliBarang(Penjual siPenjual, Produk barangDibeli, int jumlahBeli){
+    public void beliBarang(Penjual siPenjual, Produk barangDibeli, int jumlahBeli){
         double totalHarga = jumlahBeli * barangDibeli.harga;
-        if (jumlahBeli < barangDibeli.stok) {
+        if (jumlahBeli > barangDibeli.stok) {
             System.out.println("Stok Habis!");
         }
         else{
@@ -53,9 +53,9 @@ class Pembeli {
                 System.out.println("Uang tidak cukup!");
             }
             else{
-                double saldo = this.saldo - totalHarga;
-                double saldoPenjual = siPenjual.saldo + totalHarga;
-                int stokBarang = barangDibeli.stok - jumlahBeli;
+                this.saldo -= totalHarga;
+                siPenjual.saldo += totalHarga;
+                barangDibeli.stok -= jumlahBeli;
                 System.out.println("Berhasil beli " + barangDibeli.nama + " , sisa uang: Rp " + this.saldo + " .");
             }
         }
@@ -67,8 +67,10 @@ public class FileMarketplace {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         HashMap<Integer, Produk> katalogProduk = new HashMap<>();
+        Penjual toko = new Penjual("Official Store", 0);
 
         while (true) {
+            
             System.out.println("--- Simple MarketPlace ---");
             System.out.println("1. Pembeli");
             System.out.println("2. Penjual");
@@ -104,32 +106,33 @@ public class FileMarketplace {
                         switch (choiceBuyer) {
                             case 1:
                                 System.out.println("\n=== Daftar produk ===\n");
-                                int counter = 1;
-                                for (Produk barang : katalogProduk.values()){
-                                    System.out.println(counter + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                for (Integer nomor : katalogProduk.keySet()){
+                                    Produk barang = katalogProduk.get(nomor);
+                                    System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
                                     System.out.println("-------------------------------");
-                                    counter += 1;
                                     System.out.println("\n");
                                 }
                                 break;
                         
                             case 2:
                                 System.out.println("\n=== Daftar produk ===\n");
-                                int counter1 = 1;
-                                for (Produk barang : katalogProduk.values()){
-                                    System.out.println(counter1 + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                for (Integer nomor : katalogProduk.keySet()){
+                                    Produk barang = katalogProduk.get(nomor);
+                                    System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
                                     System.out.println("-------------------------------");
-                                    counter1 += 1;
                                     System.out.println("\n");
                                 }
 
                                 scanner.nextLine();
-                                System.out.print("Masukkan nama barang: ");
-                                String namaBarang = scanner.nextLine();
+                                System.out.print("Pilih nomor barang yang akan di-beli: ");
+                                int noBarang = scanner.nextInt();
 
-                                System.out.println("");
-                                
-
+                                if (katalogProduk.containsKey(noBarang)){
+                                    Produk pembelian = katalogProduk.get(noBarang);
+                                    System.out.print("Mau beli berapa unit: ");
+                                    int jumlahPembelianStok = scanner.nextInt();
+                                    saya.beliBarang(toko, pembelian, jumlahPembelianStok);
+                                }
                         }
                     }
                 }
