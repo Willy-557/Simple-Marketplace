@@ -113,33 +113,46 @@ public class FileMarketplace {
                     else {
                         switch (choiceBuyer) {
                             case 1:
-                                System.out.println("\n=== Daftar produk ===\n");
-                                for (Integer nomor : katalogProduk.keySet()){
-                                    Produk barang = katalogProduk.get(nomor);
-                                    System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
-                                    System.out.println("-------------------------------");
-                                    System.out.println("\n");
+                                if (katalogProduk.isEmpty()) {
+                                    System.out.println("Penjual belum menambahkan produk didagangannya!");
+                                    break;
                                 }
-                                break;
+                                else {
+                                    System.out.println("\n=== Daftar produk ===\n");
+                                    for (Integer nomor : katalogProduk.keySet()){
+                                        Produk barang = katalogProduk.get(nomor);
+                                        System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                        System.out.println("-------------------------------");
+                                        System.out.println("\n");
+                                    }
+                                    break;
+                                }
+                                
                         
                             case 2:
-                                System.out.println("\n=== Daftar produk ===\n");
-                                for (Integer nomor : katalogProduk.keySet()){
-                                    Produk barang = katalogProduk.get(nomor);
-                                    System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
-                                    System.out.println("-------------------------------");
-                                    System.out.println("\n");
+                                if (katalogProduk.isEmpty()) {
+                                    System.out.println("Penjual belum menambahkan produk didagangannya!");
+                                    break;
                                 }
+                                else {
+                                    System.out.println("\n=== Daftar produk ===\n");
+                                    for (Integer nomor : katalogProduk.keySet()){
+                                        Produk barang = katalogProduk.get(nomor);
+                                        System.out.println(nomor + ". Nama barang: " + barang.nama + "\n" + "   Harga barang: " + barang.harga + "\n" + "   Stok barang: " + barang.stok);
+                                        System.out.println("-------------------------------");
+                                        System.out.println("\n");
+                                    }
 
-                                scanner.nextLine();
-                                System.out.print("Pilih nomor barang yang akan di-beli: ");
-                                int noBarang = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.print("Pilih nomor barang yang akan di-beli: ");
+                                    int noBarang = scanner.nextInt();
 
-                                if (katalogProduk.containsKey(noBarang)){
-                                    Produk pembelian = katalogProduk.get(noBarang);
-                                    System.out.print("Mau beli berapa unit: ");
-                                    int jumlahPembelianStok = scanner.nextInt();
-                                    pembeliBaru.beliBarang(toko, pembelian, jumlahPembelianStok);
+                                    if (katalogProduk.containsKey(noBarang)){
+                                        Produk pembelian = katalogProduk.get(noBarang);
+                                        System.out.print("Mau beli berapa unit: ");
+                                        int jumlahPembelianStok = scanner.nextInt();
+                                        pembeliBaru.beliBarang(toko, pembelian, jumlahPembelianStok);
+                                    }
                                 }
                         }
                     }
@@ -169,6 +182,7 @@ public class FileMarketplace {
                                 System.out.println("-------------------------------");
                                 System.out.println("\n");
                             }
+
                             System.out.println("Masukkan index barang berdasarkan barang yang terakhir: ");
                             int idxBarang = scanner.nextInt();
 
